@@ -1,3 +1,4 @@
+'use client';
 export const fadeInUp = (elements, options = {}) => {
   if (typeof window !== 'undefined' && window.gsap) {
     const { gsap } = window

@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useRef, useState } from 'react';
 import { ShoppingCart, Eye, Star } from 'lucide-react';
 

@@ -1,3 +1,4 @@
+'use client';
 export default function LoadingSpinner() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
