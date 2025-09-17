@@ -8,6 +8,7 @@ export default function VideoSection() {
   const [isDragging, setIsDragging] = useState(false)
   const [dragStartX, setDragStartX] = useState(0)
   const [dragOffset, setDragOffset] = useState(0)
+  const [isMounted, setIsMounted] = useState(false)
   const videoRefs = useRef([])
   const containerRef = useRef(null)
 
@@ -18,6 +19,11 @@ export default function VideoSection() {
     { title: "Modern Craftsmanship", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
     { title: "Nature's Essence", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
   ]
+
+  // Set mounted state after component mounts
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const handleMouseEnter = (index) => {
     if (!isDragging) {
@@ -70,8 +76,10 @@ export default function VideoSection() {
       opacity: 1
     }
 
-    const cardWidth = window.innerWidth < 768 ? 280 : 320
-    const spacing = window.innerWidth < 768 ? 200 : 250
+    // Use default values during SSR, actual values after mounting
+    const isMobile = isMounted ? window.innerWidth < 768 : false
+    const cardWidth = isMobile ? 280 : 320
+    const spacing = isMobile ? 200 : 250
 
     switch (position) {
       case 0: // Center card
@@ -87,9 +95,9 @@ export default function VideoSection() {
       case -1: // Left card
         transform = {
           translateX: -spacing,
-          translateY: window.innerWidth < 768 ? 10 : 20,
-          rotate: window.innerWidth < 768 ? -3 : -6,
-          scale: window.innerWidth < 768 ? 0.85 : 0.9,
+          translateY: isMobile ? 10 : 20,
+          rotate: isMobile ? -3 : -6,
+          scale: isMobile ? 0.85 : 0.9,
           zIndex: 20,
           opacity: 0.8
         }
@@ -97,9 +105,9 @@ export default function VideoSection() {
       case 1: // Right card
         transform = {
           translateX: spacing,
-          translateY: window.innerWidth < 768 ? 10 : 20,
-          rotate: window.innerWidth < 768 ? 3 : 6,
-          scale: window.innerWidth < 768 ? 0.85 : 0.9,
+          translateY: isMobile ? 10 : 20,
+          rotate: isMobile ? 3 : 6,
+          scale: isMobile ? 0.85 : 0.9,
           zIndex: 20,
           opacity: 0.8
         }
@@ -107,21 +115,21 @@ export default function VideoSection() {
       case -2: // Far left
         transform = {
           translateX: -spacing * 1.5,
-          translateY: window.innerWidth < 768 ? 20 : 40,
-          rotate: window.innerWidth < 768 ? -8 : -12,
-          scale: window.innerWidth < 768 ? 0.7 : 0.8,
+          translateY: isMobile ? 20 : 40,
+          rotate: isMobile ? -8 : -12,
+          scale: isMobile ? 0.7 : 0.8,
           zIndex: 10,
-          opacity: window.innerWidth < 768 ? 0.3 : 0.6
+          opacity: isMobile ? 0.3 : 0.6
         }
         break
       case 2: // Far right
         transform = {
           translateX: spacing * 1.5,
-          translateY: window.innerWidth < 768 ? 20 : 40,
-          rotate: window.innerWidth < 768 ? 8 : 12,
-          scale: window.innerWidth < 768 ? 0.7 : 0.8,
+          translateY: isMobile ? 20 : 40,
+          rotate: isMobile ? 8 : 12,
+          scale: isMobile ? 0.7 : 0.8,
           zIndex: 10,
-          opacity: window.innerWidth < 768 ? 0.3 : 0.6
+          opacity: isMobile ? 0.3 : 0.6
         }
         break
       default: // Hidden cards
@@ -207,6 +215,11 @@ export default function VideoSection() {
       document.removeEventListener('touchend', handleTouchEndGlobal)
     }
   }, [isDragging, dragStartX, dragOffset])
+
+  // Don't render until mounted to avoid hydration mismatch
+  if (!isMounted) {
+    return null
+  }
 
   return (
     <section className="py-12 md:py-24 bg-gradient-to-b from-orange-50 to-red-50 overflow-hidden">
