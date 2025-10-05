@@ -351,9 +351,9 @@ export default function VideoSection() {
         {/* Fullscreen Video Modal */}
         {isFullscreen && (
           <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4">
-            <div className="relative w-full max-w-4xl">
+            <div className="relative w-full max-w-4xl max-h-screen flex items-center justify-center">
               <video
-                className="w-full h-full rounded-xl md:rounded-2xl"
+                className="w-full aspect-video rounded-xl md:rounded-2xl max-h-[90vh] object-contain"
                 src={videos[activeVideo].src}
                 controls
                 autoPlay

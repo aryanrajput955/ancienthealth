@@ -10,6 +10,7 @@ import Footer from './components/footer'
 import AyoudeyaHeritageSection from './components/story2'
 import VideoSection from './components/viedo'
 import AyurvedaProductsSection from './components/products'
+import BannerSection from './components/banenr'
 
 export default function Home() {
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function Home() {
       <Hero />
       <AyoudeyaHeritageSection />
       <StorySection />
+      <BannerSection  />
       <AyurvedaProductsSection />
       <VideoSection />
       <SourcesSection />
