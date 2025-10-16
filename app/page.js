@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
+
       <Hero />
       <AyoudeyaHeritageSection />
       <StorySection />
@@ -35,7 +35,7 @@ export default function Home() {
       <SourcesSection />
       <HerbsSection />
       <MoodSections />
-      <Footer />
+
     </div>
   )
 }

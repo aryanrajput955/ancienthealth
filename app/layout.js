@@ -1,4 +1,6 @@
 // app/layout.js
+import Footer from './components/footer'
+import Navigation from './components/navbar'
 import './globals.css'
 import { Inter, Crimson_Text } from 'next/font/google'
 
@@ -20,7 +22,9 @@ export default function RootLayout({ children }) {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
       </head>
       <body className={`${inter.className} ${crimson.className}`}>
+        <Navigation />
         {children}
+        <Footer />
       </body>
     </html>
   )
