@@ -12,7 +12,7 @@ export const metadata = {
   description:
     'Discover the power of Ayurveda with Ancient Health. We bring you authentic, 100% organic Ayurvedic products inspired by ancient wisdom—crafted to restore balance, boost immunity, and promote natural healing. Experience wellness the traditional way.',
   icons: {
-    icon: 'logo2.png',
+    icon: '/logo2.png',
     shortcut: '/logo2.png',
     apple: '/logo2.png',
   },
