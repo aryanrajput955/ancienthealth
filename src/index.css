@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--color-primary: #2d5f4f;
+		--color-primary-dark: #1e4035;
+		--color-primary-light: #3e7a70;
+		--color-accent: #d4a574;
+		--color-accent-light: #e8c9a0;
+	}
+
+	body {
+		font-family: 'Inter', sans-serif;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: 'Playfair Display', serif;
+	}
+}
+
+@layer utilities {
+	.text-gradient {
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.glass-effect {
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.animate-fade-in-up {
+		animation: fadeInUp 0.8s ease-out forwards;
+	}
+
+	.animate-fade-in {
+		animation: fadeIn 1s ease-out forwards;
+	}
+
+	.animate-slide-in-left {
+		animation: slideInLeft 0.6s ease-out forwards;
+	}
+
+	.animate-float {
+		animation: float 3s ease-in-out infinite;
+	}
+
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	.scrollbar-hide::-webkit-scrollbar,
+	.hide-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.scrollbar-hide,
+	.hide-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes float {
+
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+/* React Quill Editor Custom Styles */
+.ql-container {
+	font-size: 16px;
+	min-height: 200px;
+}
+
+.ql-editor {
+	min-height: 200px;
+	max-height: 400px;
+	overflow-y: auto;
+}
+
+.ql-editor.ql-blank::before {
+	color: #9ca3af;
+	font-style: normal;
+}
+
+.ql-toolbar {
+	background: #f8fafc;
+	border: 1px solid #e2e8f0 !important;
+	border-bottom: none !important;
+	border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.ql-container {
+	border: 1px solid #e2e8f0 !important;
+	border-radius: 0 0 0.5rem 0.5rem;
+}

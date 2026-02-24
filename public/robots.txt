@@ -1,9 +1,3 @@
-# *
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Allow: /
-
-# Host
-Host: https://www.ancienthealth.in/
-
-# Sitemaps
-Sitemap: https://www.ancienthealth.in/sitemap.xml
+Disallow:
